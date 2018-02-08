@@ -1,9 +1,9 @@
 # AgendaTelefonicaWeb
-Agenda Telefônica com JAVA WEB
+Agenda Telefônica com JAVA WEB com JSF 
 
 
 ******************************
-** TECNOLOGIAS:             **
+  TECNOLOGIAS:             
 ******************************
 
 - Projeto JavaEE/Web;
