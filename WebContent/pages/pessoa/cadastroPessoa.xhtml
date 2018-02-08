@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:f="http://java.sun.com/jsf/core"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:ui="http://java.sun.com/jsf/facelets">
+      
+      
+<ui:composition template="/templates/template_principal.xhtml">  
+	<ui:define name="corpo">
+		<h1>Nova Pessoa</h1>		
+			<h:form id="form">
+			<h:panelGrid columns="0">
+					
+				<h:outputLabel value="Nome:" for="nome"/>
+				<h:inputText id="nome" value="#{pessoaBean.pessoa.nome}"/>
+				
+				<h:outputLabel value="CPF:" for="cpf" />
+				<h:inputText id="cpf" value="#{pessoaBean.pessoa.cpf}"/>
+				
+				<h:outputLabel value="E-mail:" for="email" />
+				<h:inputText id="email" value="#{pessoaBean.pessoa.email}"/>
+				
+				<h:outputLabel value="Data de nascimento:" for="dtnascimento"/>
+				<h:inputText id="dtnascimento" value="#{pessoaBean.pessoa.dataNascimento}"/>
+				
+				 
+				<h:outputLabel value="Login" for="login"/>
+				<h:inputText id="login" value="#{pessoaBean.pessoa.login}" />
+																																	
+				<h:outputLabel value="Senha:" for="senha"/>
+				<h:inputText id="senha" value="#{pessoaBean.pessoa.senha}"/>
+							
+				<h:outputLabel value="Telefone:" for="telefone"/>
+				<h:inputText  id="telefone" value="#{pessoaBean.pessoa.telefone}"/>
+								 																
+			    <div class="acoes-principais">			     
+					<h:commandLink value="Voltar" action="lista" immediate="true" >
+						<f:ajax render="@form" />
+					</h:commandLink>
+					&#160;
+					<h:commandButton value="Cadastrar" action="#{pessoaBean.adiciona}">
+						 <f:ajax execute="@form" render="@form :mensagens" /> 						
+					</h:commandButton>
+			
+			  </div>
+		    </h:panelGrid>	
+		  </h:form>
+		</ui:define>
+  </ui:composition>
+
+</html>

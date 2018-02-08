@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:t="http://myfaces.apache.org/tomahawk"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+<ui:composition template="/templates/template_principal.xhtml">
+	<ui:define name="corpo">
+	<t:saveState value="#{pessoaBean.pessoas}" />
+	<h1>Listagem de Pessoas</h1>
+		<h:form id="form">
+			<div class="acoes-principais" > 
+				<h:commandLink value="Novo" action="cadastroPessoa" >
+					<f:ajax execute="@form" render="@form" />
+				</h:commandLink>
+				&#160;
+				<h:commandButton value="Listar" action="#{pessoaBean.lista}">
+					<f:ajax execute="@form" render="@form" />
+				</h:commandButton>
+			</div>
+			<h:dataTable value="#{pessoaBean.pessoas}" var="pessoa"
+				styleClass="dados" rowClasses="impar, par">
+				<h:column>
+					<f:facet name="header">ID</f:facet>
+					#{pessoa.id}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
+					#{pessoa.nome}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Login</f:facet>
+					#{pessoa.login}
+				</h:column>
+				<h:column>
+					<f:facet name="header">CPF</f:facet>
+					#{pessoa.cpf}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Dt Nasc</f:facet>
+					#{pessoa.dataNascimento}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+					#{pessoa.email}
+				</h:column>				
+				<h:column>
+					<f:facet name="header">Telefone</f:facet>
+					#{pessoa.telefone}
+				</h:column>
+				
+				<h:column>
+					<f:facet name="header">Ações</f:facet>
+					<h:commandLink value="remover" action="#{pessoaBean.remove(pessoa)}" >
+						<f:ajax render="@form :mensagens" />
+					</h:commandLink>
+					&#160;
+					<h:commandLink value="alterar" action="edita">
+						<f:ajax render="@form :mensagens" />
+						<f:setPropertyActionListener value="#{pessoa}" target="#{pessoaBean.pessoa}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+ </ui:composition>
+</html>
